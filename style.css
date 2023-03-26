@@ -1,16 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
+/* Setting the background color of the body to a gradient. It is also setting the font family to Lato.
+It is also setting the display to flex, the flex direction to column, the align items to center, the
+justify content to center, and the margin to 0. */
 body {
-  font-family: 'Roboto', sans-serif;
+  background: #efefbb;
+  background: linear-gradient(to right, #d4d3dd, #efefbb);
+  font-family: 'Lato', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  overflow: hidden;
   margin: 0;
+}
+
+/* Setting the letter spacing of the h1 tag to 3px. */
+h1 {
+  letter-spacing: 3px;
+}
+
+/* Setting the display to flex, the flex wrap to wrap, the align items to space between, the justify
+content to center, the margin to 0 auto, and the max width to 1200px. */
+.poke-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: space-between;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Setting the background color to #eee, the border radius to 10px, the box shadow to 0 3px 15px
+rgba(100, 100, 100, 0.5), the margin to 10px, the padding to 20px, and the text align to center. */
+.pokemon {
+  background-color: #eee;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Setting the background color to rgba(255, 255, 255, 0.6), the border radius to 50%, the
+width to 120px, the height to 120px, and the text align to center. */
+.pokemon .img-container {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  text-align: center;
+}
+
+/* Setting the max width to 90%, and the margin top to 20px. */
+.pokemon .img-container img {
+  max-width: 90%;
+  margin-top: 20px;
+}
+
+/* Setting the margin top to 20px. */
+.pokemon .info {
+  margin-top: 20px;
+}
+
+/* Setting the background color to rgba(0, 0, 0, 0.1), the padding to 5px 10px, the border
+radius to 10px, and the font size to 0.8em. */
+.pokemon .info .number {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 0.8em;
+}
+
+/* Setting the margin to 15px 0 7px, and the letter spacing to 1px. */
+.pokemon .info .name {
+  margin: 15px 0 7px;
+  letter-spacing: 1px;
+}
+
+/* Capitalizing the first letter of each word in the h3 tag. */
+h3 {
+  text-transform: capitalize;
+}
+
+/* Setting the box shadow to 0 3px 15px rgba(100, 100, 100, 0.5). */
+.search-container {
+  box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
 }
