@@ -2,47 +2,47 @@
 poke-container. It is also creating a variable called pokemon_count and assigning it to the number
 1015. It is also creating a variable called colors and assigning it to an object with different
 colors. */
-const poke_container = document.getElementById('poke-container')
-const pokemon_count = 1015
+const poke_container = document.getElementById("poke-container");
+const pokemon_count = 1015;
 const colors = {
-  fire: '#FDDFDF',
-  grass: '#DEFDE0',
-  electric: '#FCF7DE',
-  water: '#DEF3FD',
-  ground: '#f4e7da',
-  rock: '#d5d5d4',
-  fairy: '#fceaff',
-  poison: '#98d7a5',
-  bug: '#f8d5a3',
-  dragon: '#97b3e6',
-  psychic: '#eaeda1',
-  flying: '#F5F5F5',
-  fighting: '#E6E0D4',
-  normal: '#F5F5F5',
-}
+  fire: "#FDDFDF",
+  grass: "#DEFDE0",
+  electric: "#FCF7DE",
+  water: "#DEF3FD",
+  ground: "#f4e7da",
+  rock: "#d5d5d4",
+  fairy: "#fceaff",
+  poison: "#98d7a5",
+  bug: "#f8d5a3",
+  dragon: "#97b3e6",
+  psychic: "#eaeda1",
+  flying: "#F5F5F5",
+  fighting: "#E6E0D4",
+  normal: "#F5F5F5",
+};
 
 /* Creating a variable called main_types and assigning it to the keys of the colors object. */
-const main_types = Object.keys(colors)
+const main_types = Object.keys(colors);
 
 /**
  * It loops through the number of pokemon and calls the getPokemon function for each one.
  */
 const fetchPokemons = async () => {
   for (let i = 1; i <= pokemon_count; i++) {
-    await getPokemon(i)
+    await getPokemon(i);
   }
-}
+};
 
 /**
  * It takes an id, makes a request to the PokeAPI, and then creates a card with the data it receives.
  * @param id - the id of the pokemon you want to get
  */
 const getPokemon = async (id) => {
-  const url = `https://pokeapi.co/api/v2/pokemon/${id}`
-  const res = await fetch(url)
-  const data = await res.json()
-  createPokemonCard(data, id)
-}
+  const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  createPokemonCard(data, id);
+};
 
 /**
  * It creates a div element, adds a class to it, and then adds some HTML to it
@@ -50,16 +50,16 @@ const getPokemon = async (id) => {
  * @param id - The id of the pokemon
  */
 const createPokemonCard = (pokemon, id) => {
-  const pokemonEl = document.createElement('div')
-  pokemonEl.classList.add('pokemon')
+  const pokemonEl = document.createElement("div");
+  pokemonEl.classList.add("pokemon");
 
-  const dexID = pokemon.id.toString().padStart(3, '0')
+  const dexID = pokemon.id.toString().padStart(3, "0");
 
-  const poke_types = pokemon.types.map((type) => type.type.name).join('/')
-  const type = main_types.find((type) => poke_types.indexOf(type) > -1)
-  const color = colors[type]
+  const poke_types = pokemon.types.map((type) => type.type.name).join("/");
+  const type = main_types.find((type) => poke_types.indexOf(type) > -1);
+  const color = colors[type];
 
-  pokemonEl.style.backgroundColor = color
+  pokemonEl.style.backgroundColor = color;
 
   const pokemonInnerHTML = `
     <div class="img-container">
@@ -76,15 +76,15 @@ const createPokemonCard = (pokemon, id) => {
         <span>${type}</span>
       </small>
     </div>
-  `
+  `;
 
-  pokemonEl.innerHTML = pokemonInnerHTML
+  pokemonEl.innerHTML = pokemonInnerHTML;
 
-  poke_container.appendChild(pokemonEl)
-}
+  poke_container.appendChild(pokemonEl);
+};
 
 /* Looping through the number of pokemon and calling the getPokemon function for each one. */
-fetchPokemons()
+fetchPokemons();
 
 /* Creating a variable called searchInput and assigning it to the element with the id of search-input.
 It is also adding an event listener to the searchInput variable. It is also creating a variable
@@ -94,19 +94,19 @@ looping through the pokemonCards variable and creating a variable called name an
 the text content of the element with the class of name. It is also checking if the name variable
 includes the filterValue variable. If it does, it is setting the display of the card variable to
 block. If it doesn't, it is setting the display of the card variable to none. */
-const searchInput = document.getElementById('search-input')
+const searchInput = document.getElementById("search-input");
 
-searchInput.addEventListener('input', () => {
-  const filterValue = searchInput.value.trim().toLowerCase()
-  const pokemonCards = document.querySelectorAll('.pokemon')
+searchInput.addEventListener("input", () => {
+  const filterValue = searchInput.value.trim().toLowerCase();
+  const pokemonCards = document.querySelectorAll(".pokemon");
 
   pokemonCards.forEach((card) => {
-    const name = card.querySelector('.name').textContent.toLowerCase()
+    const name = card.querySelector(".name").textContent.toLowerCase();
 
     if (name.includes(filterValue)) {
-      card.style.display = 'block'
+      card.style.display = "block";
     } else {
-      card.style.display = 'none'
+      card.style.display = "none";
     }
-  })
-})
+  });
+});
